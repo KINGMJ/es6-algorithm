@@ -1,0 +1,36 @@
+{
+  "name": "es6-arithmetic-practice",
+  "version": "1.0.0",
+  "description": "使用es6的算法练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack -p --colors",
+    "serve": "webpack-dev-server --open --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KINGMJ/es6-arithmetic-practice.git"
+  },
+  "keywords": [
+    "es6",
+    "arithmetic"
+  ],
+  "author": "jerry.mei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KINGMJ/es6-arithmetic-practice/issues"
+  },
+  "homepage": "https://github.com/KINGMJ/es6-arithmetic-practice#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.2.6",
+    "babel-loader": "^8.1.0",
+    "jest": "^25.2.7",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
