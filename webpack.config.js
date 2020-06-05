@@ -5,7 +5,7 @@ const config = {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
-        port: 8081,
+        port: 8082,
     },
     //入口文件输出配置
     output: {
