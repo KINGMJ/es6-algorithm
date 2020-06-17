@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class LinkedList {
+export default class LinkedList {
   constructor() {
     this.head = new Node(null)  //头结点
     this.length = 0             //单链表的长度
@@ -89,31 +89,6 @@ class LinkedList {
 
   // insert(index, elem) { }
 }
-
-// export function testLinkedList() {
-  // const linkedList = new LinkedList()
-  // linkedList.append(1)
-  // linkedList.append(2)
-  // linkedList.append(3)
-  // linkedList.append(4)
-  // console.log(linkedList)
-  // console.log(linkedList.getElem(4))
-
-  // console.log(linkedList.toArray())
-
-
-  // const arr = [1, 2, 3]
-  // const newLinkedList = linkedList.array2List(arr)
-
-  // console.log(arr);
-  // console.log(newLinkedList.toArray())
-  // console.log(_.isEqual(newLinkedList.toArray(), arr));
-
-
-  // const elem = new Node("新插入的元素")
-  // linkedList.insert(3, elem)
-  // console.log(linkedList)
-// }
 
 
 
