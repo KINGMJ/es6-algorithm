@@ -56,42 +56,64 @@ class LinkedList {
    */
   list2Array(node) {
     if (!node) {
-      return [];
+      return []
     }
-    const result = [node.data];
-    const restResult = this.list2Array(node.next);
-    return result.concat(restResult);
+    const result = [node.data]
+    const restResult = this.list2Array(node.next)
+    return result.concat(restResult)
+  }
+
+  /**
+   * 数组转单链表
+   * @param {*} arr 
+   */
+  array2List(arr) {
+    if (arr.length === 0) {
+      return this
+    }
+    let i = 0, curr = this.head
+    for (i; i < arr.length; i++) {
+      curr.next = new Node(arr[i])
+      curr = curr.next
+      this.length++
+    }
+    return this
   }
 
   /**
    * 单链表整表转数组
    */
   toArray() {
-    return this.list2Array(this.head.next);
+    return this.list2Array(this.head.next)
   }
 
-  insert(index, elem) {
-
-  }
+  // insert(index, elem) { }
 }
 
-export function testLinkedList() {
-  const linkedList = new LinkedList()
-  linkedList.append(1)
-  linkedList.append(2)
-  linkedList.append(3)
-  linkedList.append(4)
-  console.log(linkedList)
-  console.log(linkedList.getElem(4))
+// export function testLinkedList() {
+  // const linkedList = new LinkedList()
+  // linkedList.append(1)
+  // linkedList.append(2)
+  // linkedList.append(3)
+  // linkedList.append(4)
+  // console.log(linkedList)
+  // console.log(linkedList.getElem(4))
 
-  console.log(linkedList.toArray())
+  // console.log(linkedList.toArray())
+
+
+  // const arr = [1, 2, 3]
+  // const newLinkedList = linkedList.array2List(arr)
+
+  // console.log(arr);
+  // console.log(newLinkedList.toArray())
+  // console.log(_.isEqual(newLinkedList.toArray(), arr));
+
 
   // const elem = new Node("新插入的元素")
   // linkedList.insert(3, elem)
   // console.log(linkedList)
-
-
-}
+// }
 
 
 
