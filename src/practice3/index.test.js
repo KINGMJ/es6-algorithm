@@ -18,3 +18,20 @@ describe('测试数组跟链表互相转换', () => {
     expect(linkedList.toArray()).toStrictEqual([]);
   })
 })
+
+describe('测试单链表追加元素', () => {
+  test('追加元素', () => {
+    const linkedList = new LinkedList()
+    linkedList.append(1);
+    linkedList.append(2);
+    expect(linkedList.toArray()).toStrictEqual([1, 2]);
+  })
+})
+
+describe('测试单链表读取元素', () => {
+  test('读取元素', () => {
+    let linkedList = new LinkedList()
+    linkedList = linkedList.array2List([1, 2, 3, 4]);
+    expect(linkedList.getElem(3)).toStrictEqual(3);
+  })
+})
