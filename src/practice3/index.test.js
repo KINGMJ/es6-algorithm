@@ -35,3 +35,30 @@ describe('测试单链表读取元素', () => {
     expect(linkedList.getElem(3)).toStrictEqual(3);
   })
 })
+
+describe('测试单链表插入元素', () => {
+  test('表头越界', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.insert(0, 5)
+    expect(linkedList).toStrictEqual(false)
+  })
+
+  test('表尾越界', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.insert(6, 5)
+    expect(linkedList).toStrictEqual(false)
+  })
+
+  test('表头插入', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.insert(1, 5)
+    expect(linkedList.toArray()).toStrictEqual([5, 1, 2, 3, 4])
+  })
+
+  test('表尾插入', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.insert(5, 5)
+    expect(linkedList.toArray()).toStrictEqual([1, 2, 3, 4, 5])
+  })
+
+})

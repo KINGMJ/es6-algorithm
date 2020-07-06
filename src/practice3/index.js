@@ -87,7 +87,26 @@ export default class LinkedList {
     return this.list2Array(this.head.next)
   }
 
-  // insert(index, elem) { }
+  /**
+   * 单链表的插入，在节点之前插入
+   * @param {*} index 第几个节点
+   * @param {*} elem 
+   */
+  insert(index, elem) {
+    let i = 1, p = this.head
+    const s = new Node(elem)
+    while (p && i < index) {
+      p = p.next
+      ++i
+    }
+    //越界
+    if (!p || i > index) {
+      return false
+    }
+    s.next = p.next
+    p.next = s
+    return this
+  }
 }
 
 
