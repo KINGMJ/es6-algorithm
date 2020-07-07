@@ -62,3 +62,35 @@ describe('测试单链表插入元素', () => {
   })
 
 })
+
+describe('测试单链表删除元素', () => {
+  test('删除的元素不在链表中', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.delete(0)
+    expect(linkedList).toStrictEqual(false)
+  })
+
+  test('删除的元素不在链表中2', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.delete(5)
+    expect(linkedList).toStrictEqual(false)
+  })
+
+  test('删除第一个元素', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.delete(1)
+    expect(linkedList.toArray()).toStrictEqual([2, 3, 4])
+  })
+
+  test('删除中间元素', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.delete(3)
+    expect(linkedList.toArray()).toStrictEqual([1, 2, 4])
+  })
+
+  test('删除最后一个元素', () => {
+    let linkedList = new LinkedList().array2List([1, 2, 3, 4])
+    linkedList = linkedList.delete(4)
+    expect(linkedList.toArray()).toStrictEqual([1, 2, 3])
+  })
+})

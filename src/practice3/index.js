@@ -107,6 +107,27 @@ export default class LinkedList {
     p.next = s
     return this
   }
+
+  /**
+   * 单链表的删除
+   * @param {*} index 
+   */
+  delete(index) {
+    if (index <= 0) {
+      return false;
+    }
+    let i = 1, p = this.head, q
+    while (p.next && i < index) {
+      p = p.next
+      ++i
+    }
+    if (!p.next || index > i) {
+      return false
+    }
+    q = p.next
+    p.next = q.next
+    return this
+  }
 }
 
 
