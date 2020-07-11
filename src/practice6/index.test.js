@@ -1,4 +1,5 @@
-import { hasCycle, cycleList } from './index'
+import { hasCycle } from './index'
+import { cycleList } from '../structure/linkedList'
 
 describe('环形链表测试', () => {
   test('链表只有一个节点，没有环', () => {

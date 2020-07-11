@@ -1,4 +1,5 @@
-import { oddEvenList, array2List } from './index'
+import { oddEvenList } from './index'
+import { array2List } from '../structure/linkedList'
 
 describe('奇偶链表测试', () => {
   test('链表为空', () => {

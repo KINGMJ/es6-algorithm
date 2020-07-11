@@ -1,4 +1,5 @@
-import { addTwoNumbers, array2List } from './index'
+import { addTwoNumbers } from './index'
+import { array2List } from '../structure/linkedList'
 
 describe('用链表来实现两数相加', () => {
   test('两个链表都为空', () => {
