@@ -1,4 +1,4 @@
-import { hasCycle } from './index1'
+import { hasCycle } from './index2'
 import { cycleList } from '../structure/linkedList'
 
 describe('环形链表测试', () => {
