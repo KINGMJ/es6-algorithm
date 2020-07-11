@@ -1,3 +1,5 @@
+import { matchesProperty } from "lodash";
+
 //声明一个单链表结点
 class ListNode {
   constructor(val) {
@@ -54,5 +56,13 @@ export function cycleList(arr, index) {
  * @return {ListNode}
  */
 export function hasCycle(head) {
-  
+  const map = new Map()
+  while (head) {
+    if (map.has(head)) {
+      return true
+    }
+    map.set(head, true)
+    head = head.next
+  }
+  return false
 }
