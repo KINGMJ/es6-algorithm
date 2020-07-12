@@ -94,3 +94,13 @@ describe('测试单链表删除元素', () => {
     expect(linkedList.toArray()).toStrictEqual([1, 2, 3])
   })
 })
+
+describe('测试单链表整表创建--->头插法', () => {
+  test('创建随机链表', () => {
+    const linkedList = new LinkedList().createListHead(5)
+    const testArray = linkedList.toArray()
+    console.log(testArray)
+    expect(Array.isArray(testArray)).toStrictEqual(true)
+    expect(testArray.length).toStrictEqual(5)
+  })
+})

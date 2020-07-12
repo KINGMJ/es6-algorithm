@@ -128,6 +128,21 @@ export default class LinkedList {
     p.next = q.next
     return this
   }
+
+  /**
+   * 头插法实现链表整表创建
+   * @param {*} n 
+   */
+  createListHead(n) {
+    let i = 0, node;
+    for (i; i < n; i++) {
+      node = new Node(Number.parseInt(Math.random() * 10 + 1))
+      node.next = this.head.next
+      this.head.next = node
+      this.length++
+    }
+    return this
+  }
 }
 
 
