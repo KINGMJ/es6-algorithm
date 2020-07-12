@@ -104,3 +104,23 @@ describe('测试单链表整表创建--->头插法', () => {
     expect(testArray.length).toStrictEqual(5)
   })
 })
+
+describe('测试单链表整表创建--->尾插法', () => {
+  test('创建随机链表', () => {
+    const linkedList = new LinkedList().createListTail(5)
+    const testArray = linkedList.toArray()
+    console.log(testArray)
+    expect(Array.isArray(testArray)).toStrictEqual(true)
+    expect(testArray.length).toStrictEqual(5)
+  })
+})
+
+describe('测试单链表整表删除', () => {
+  test('整表删除', () => {
+    let linkedList = new LinkedList().createListTail(5)
+    linkedList = linkedList.clearList()
+    console.log(linkedList)
+    expect(linkedList.toArray()).toStrictEqual([])
+    expect(linkedList.length).toStrictEqual(0)
+  })
+})

@@ -143,6 +143,35 @@ export default class LinkedList {
     }
     return this
   }
+
+  /**
+   * 尾插法实现链表整表创建
+   * @param {*} n 
+   */
+  createListTail(n) {
+    let i = 0, node = this.head;
+    for (i; i < n; i++) {
+      node.next = new Node(Number.parseInt(Math.random() * 10 + 1))
+      node = node.next
+      this.length++
+    }
+    return this
+  }
+
+  /**
+   * 单链表整表删除
+   */
+  clearList() {
+    let p = this.head.next, q
+    while (p) {
+      q = p.next
+      //free p 释放p
+      p = q
+      this.length--
+    }
+    this.head.next = p
+    return this
+  }
 }
 
 
