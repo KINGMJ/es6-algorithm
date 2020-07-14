@@ -25,4 +25,21 @@ export class StaticLinkList {
     }
     return this
   }
+
+  /**
+   * 模拟申请内存
+   * 在静态链表中，每次插入数据都是从备用链表上取得第一个结点作为待插入的新结点
+   */
+  malloc_ssl() {
+    //获取备用链表第一个结点的下标
+    let i = this.space[0].cur
+    //由于要拿出一个分量来使用了，所以我们就得把它的下一个分量用来做备用
+    if (i) {
+      this.space[0].cur = this.space[i].cur
+    }
+    //返回备用链表第一个结点的下标
+    return i
+  }
+
+
 }

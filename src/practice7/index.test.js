@@ -12,5 +12,7 @@ describe('静态链表初始化测试', () => {
     expect(staticLinkList.space[0].cur).toStrictEqual(1)
     //最后一个元素的cur存放第一个插入元素的下标，相当于头结点
     expect(staticLinkList.space[9].cur).toStrictEqual(0)
+
+    console.log(staticLinkList)
   })
 })
