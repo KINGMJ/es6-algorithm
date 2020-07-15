@@ -1,6 +1,8 @@
 export class StaticLinkList {
   constructor() {
     this.space = [] //静态链表使用一维数组space来表示
+    this.length = 0
+    this.MAX_SIZE = 0
   }
 
   init(maxsize) {
@@ -23,6 +25,7 @@ export class StaticLinkList {
       cur: 0,
       data: null
     }
+    this.MAX_SIZE = maxsize
     return this
   }
 
@@ -41,5 +44,66 @@ export class StaticLinkList {
     return i
   }
 
+  /**
+   * 静态链表整表创建，尾插法
+   * @param {*} n 
+   */
+  createListTail(n) {
+    let i = 0, j;
 
+    for (i; i < n; i++) {
+      j = this.malloc_ssl() //获得空闲分量的下标
+      if (!j) {
+        return false
+      }
+
+      this.space[j].data = Number.parseInt(Math.random() * 10 + 1)
+      //最后一个元素须将cur设置为0
+      if (j == n) {
+        this.space[j].cur = 0
+      }
+      this.length++
+    }
+    //设置头结点
+    this.space[this.MAX_SIZE - 1].cur = 1
+    return this
+  }
+
+  /**
+   * 静态链表的插入，在节点前插入
+   * @param {*} index 
+   * @param {*} elem 
+   */
+  insert(index, elem) {
+    let i = 1, new_node_index, cursor;
+
+    //最后一个元素下标，也就是找到头结点
+    cursor = this.MAX_SIZE - 1
+
+    //插入元素的范围，1到最后一个元素+1，即可以插入到表尾
+    if (index < 1 || index > this.length + 1) {
+      return false
+    }
+
+    //获得空闲分量的下标
+    new_node_index = this.malloc_ssl()
+
+    if (!new_node_index) {
+      return false;
+    }
+
+    this.space[new_node_index].data = elem
+    this.length++
+
+    //找到第index元素的前一个元素
+    for (i; i <= index - 1; i++) {
+      cursor = this.space[cursor].cur
+    }
+
+    //把第index个元素的前一个元素的cur赋值给新元素的cur，即把新插入的元素指向给第index个元素
+    this.space[new_node_index].cur = this.space[cursor].cur
+    //把新元素的下标赋值给第index个元素的前一个元素，即把第index个元素的前一个元素指向新插入的元素
+    this.space[cursor].cur = new_node_index
+    return this
+  }
 }
