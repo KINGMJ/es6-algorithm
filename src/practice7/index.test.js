@@ -25,6 +25,8 @@ describe('静态链表整表创建，尾插法', () => {
     //第一个元素的cur应该为11
     expect(staticLinkList.space[0].cur).toStrictEqual(11)
     expect(staticLinkList.length).toStrictEqual(10)
+    //第11个元素的cur应该0
+    expect(staticLinkList.space[10].cur).toStrictEqual(0)
     console.log(staticLinkList)
   })
 })
