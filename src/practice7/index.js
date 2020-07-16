@@ -144,4 +144,18 @@ export class StaticLinkList {
     this.length--
     return this
   }
+
+  /**
+   * 静态链表的长度
+   */
+  listLength() {
+    let length = 0;
+    let cursor = this.space[this.MAX_SIZE - 1].cur
+    while (cursor) {
+      cursor = this.space[cursor].cur
+      length++
+    }
+    return length
+  }
+
 }

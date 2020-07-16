@@ -67,6 +67,14 @@ describe('静态链表删除测试', () => {
     expect(staticLinkList.space[0].cur).toStrictEqual(1)
     //下标为1的元素保存的cur为8，即删除前备用链表的第一个元素的位置
     expect(staticLinkList.space[1].cur).toStrictEqual(8)
-    
+
+  })
+})
+
+describe('静态链表的长度获取，使用链表遍历的方式', () => {
+  test('链表长度', () => {
+    let staticLinkList = new StaticLinkList().init(30)
+    staticLinkList = staticLinkList.createListTail(20)
+    expect(staticLinkList.listLength()).toStrictEqual(20)
   })
 })
