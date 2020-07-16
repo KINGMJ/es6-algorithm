@@ -49,3 +49,24 @@ describe('静态链表插入测试', () => {
     expect(staticLinkList.space[2].cur).toStrictEqual(7)
   })
 })
+
+describe('静态链表删除测试', () => {
+  test('删除第一个元素', () => {
+    let staticLinkList = new StaticLinkList().init(20)
+    staticLinkList = staticLinkList.createListTail(6)
+    staticLinkList = staticLinkList.insert(3, "插入的元素")
+    console.log(staticLinkList)
+    staticLinkList = staticLinkList.listDelete(1)
+    console.log(staticLinkList)
+
+    //长度为6
+    expect(staticLinkList.length).toStrictEqual(6)
+    //头结点保存的cur为2
+    expect(staticLinkList.space[19].cur).toStrictEqual(2)
+    //下标为0的元素保存的cur为1
+    expect(staticLinkList.space[0].cur).toStrictEqual(1)
+    //下标为1的元素保存的cur为8，即删除前备用链表的第一个元素的位置
+    expect(staticLinkList.space[1].cur).toStrictEqual(8)
+    
+  })
+})

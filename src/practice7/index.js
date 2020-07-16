@@ -106,4 +106,42 @@ export class StaticLinkList {
     this.space[cursor].cur = new_node_index
     return this
   }
+
+  /**
+   * 释放结点
+   * @param {int} index 
+   */
+  free_ssl(index) {
+    //把下标为0，即存放备用链表第一个元素的cur分量赋值给第index个元素
+    this.space[index].cur = this.space[0].cur
+    //data置为null，表示删除了
+    this.space[index].data = null
+    //由于第index个元素释放出来了，所以下标为0的元素的cur为index
+    this.space[0].cur = index
+  }
+
+  /**
+   * 静态链表删除操作
+   * @param {*} index 
+   */
+  listDelete(index) {
+    let i = 1, cursor
+    //最后一个元素下标，也就是找到头结点
+    cursor = this.MAX_SIZE - 1
+    //插入元素的范围，1到最后一个元素
+    if (index < 1 || index > this.length) {
+      return false
+    }
+    //找到第index元素的前一个元素
+    for (i; i <= index - 1; i++) {
+      cursor = this.space[cursor].cur
+    }
+    //第index个元素的下标
+    i = this.space[cursor].cur
+    //前一个元素的cur指向index元素的cur，即表示 index已经删除了，前一个元素指向它后一个元素
+    this.space[cursor].cur = this.space[i].cur
+    this.free_ssl(index)
+    this.length--
+    return this
+  }
 }
