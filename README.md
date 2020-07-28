@@ -1,4 +1,4 @@
-# es6-arithmetic-practice
+# es6-algorithm
 使用es6的算法练习
 
 ## 运行
