@@ -1,5 +1,5 @@
 {
-  "name": "es6-arithmetic-practice",
+  "name": "es6-algorithm",
   "version": "1.0.0",
   "description": "使用es6的算法练习",
   "main": "index.js",
@@ -10,18 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KINGMJ/es6-arithmetic-practice.git"
+    "url": "git+https://github.com/KINGMJ/es6-algorithm.git"
   },
   "keywords": [
     "es6",
-    "arithmetic"
+    "algorithm"
   ],
   "author": "jerry.mei",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KINGMJ/es6-arithmetic-practice/issues"
+    "url": "https://github.com/KINGMJ/es6-algorithm/issues"
   },
-  "homepage": "https://github.com/KINGMJ/es6-arithmetic-practice#readme",
+  "homepage": "https://github.com/KINGMJ/es6-algorithm#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
