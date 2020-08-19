@@ -28,3 +28,7 @@ export function reverseList(head) {
   head.next = null
   return newList
 }
+
+export function arr2Tree(arr) {
+  
+}

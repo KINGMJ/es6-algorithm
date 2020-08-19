@@ -258,3 +258,174 @@ function reverseList(head){
   return newList
 }
 ```
+
+## 5. 数组转多叉树
+
+```
+- 全部文件
+  - 图片
+    - 壁纸
+      - 风景
+      - 动漫
+      - 游戏
+    - 头像
+  - 文档
+  - 视频
+    - 电影
+    - 纪录片
+```
+
+```
+[
+      { id: 1, name: '全部文件', parent_id: null },
+      { id: 2, name: '图片', parent_id: 1 },
+      { id: 3, name: '文档', parent_id: 1 },
+      { id: 4, name: '视频', parent_id: 1 },
+      { id: 5, name: '壁纸', parent_id: 2 },
+      { id: 6, name: '头像', parent_id: 2 },
+      { id: 7, name: '电影', parent_id: 4 },
+      { id: 8, name: '纪录片', parent_id: 4 },
+      { id: 9, name: '风景', parent_id: 5 },
+      { id: 10, name: '动漫', parent_id: 5 },
+      { id: 11, name: '游戏', parent_id: 5 }
+]
+```
+
+第一步：
+
+```
+function arr2Tree(arr){
+
+}
+```
+
+
+第二步：
+
+基线条件：如果arr为空数组，直接返回空数组
+
+```
+function arr2Tree(arr){
+  if(arr.length == 0){
+    return arr
+  }
+}
+```
+
+第三步：
+
+大问题拆解，把数组的第一项拿出来，数组剩余的部分继续做 arr2Tree 操作
+
+假设剩下的部分已经转换成tree了，代码如下
+
+```
+function arr2Tree(arr){
+  if(arr.length == 0){
+    return arr
+  }
+  const head = arr[0]
+  const rest = arr.slice(1)
+  const tree = arr2Tree(rest)
+}
+```
+
+然后我们只需解决数组第一项的问题，把它跟余下的已经转换为tree的数据合并为一个tree
+
+```
+{ id: 1, name: '全部文件', parent_id: null }
+
+[
+    { id: 2, name: '图片', childern:[...] },
+    { id: 3, name: '文档' },
+    { id: 4, name: '视频', children: [...] }
+]
+```
+
+对于第一项的问题，我们只需要遍历余下的数组，判断parent_id是否是等于第一项的id，如果是就是它的子节点；如果不是，就跟它是兄弟节点
+
+### 优化写法：找儿子
+
+对于这样的数组，我们可以先找 null 的儿子为 1， 再找 1 的儿子为2，3，4， 依次类推
+
+
+```
+[
+      { id: 1, name: '全部文件', parent_id: null },
+      { id: 2, name: '图片', parent_id: 1 },
+      { id: 3, name: '文档', parent_id: 1 },
+      { id: 4, name: '视频', parent_id: 1 },
+      { id: 5, name: '壁纸', parent_id: 2 },
+      { id: 6, name: '头像', parent_id: 2 },
+      { id: 7, name: '电影', parent_id: 4 },
+      { id: 8, name: '纪录片', parent_id: 4 },
+      { id: 9, name: '风景', parent_id: 5 },
+      { id: 10, name: '动漫', parent_id: 5 },
+      { id: 11, name: '游戏', parent_id: 5 }
+]
+```
+
+第一步：
+
+```
+function arr2Tree(arr, pid){
+
+}
+```
+
+第二步：
+
+在整个数组中找儿子，可能找不到。这个例子基线条件其实没有那么明显，遍历整个数组，遍历完了都没找到儿子。那么什么都不做就行了。
+
+我们用一个数组存放找到的结果
+
+```
+function arr2Tree(arr, pid) {
+  const res = [];
+  arr.forEach(item => {
+    if (item.parent_id === pid) {
+
+    }  
+  });
+  return res
+}
+```
+
+第三步：
+
+我们把问题分解为找 null 的儿子 1， 以及 1 的儿子 2、3、4...
+
+我们假设找 1 的儿子的问题已经解决，再来看找 null的儿子的问题。
+
+找到的结果可能有多个，我们保存在res 里，最终返回这个res即可。
+
+```
+function arr2Tree(arr, pid) {
+  const res = [];
+  arr.forEach(item => {
+    if (item.parent_id === pid) {
+       res.push(item)
+    }  
+  });
+  return res
+}
+```
+
+也有可能没找到儿子。那么对于对于前面我们假设找 1 的儿子的问题已经解决了这种情况。它也是要么找到了儿子，返回res。要么没找到，返回[]。
+
+所以我们可能根据返回的结果来做个判断。如果当前选项的儿子找到了儿子，我们给它追加一个children属性就可以了，用来存放它的儿子。
+
+```
+function arr2Tree(arr, pid) {
+  const res = [];
+  arr.forEach(item => {
+    if (item.parent_id === pid) {
+      const result = arr2Tree2(arr, item.id);
+      if (result.length) {
+        item.children = result;
+      }
+      res.push(item)
+    }  
+  });
+  return res
+}
+```
