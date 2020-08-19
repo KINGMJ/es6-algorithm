@@ -30,5 +30,35 @@ export function reverseList(head) {
 }
 
 export function arr2Tree(arr) {
-  
+  if (arr.length == 0) {
+    return arr
+  }
+  const head = arr[0]
+  const tree = arr2Tree(arr.slice(1))
+  const childrens = [], siblings = [];
+  for (let i = 0; i < tree.length; i++) {
+    if (head.id == tree[i].parent_id) {
+      childrens.push(tree[i])
+    } else {
+      siblings.push(tree[i])
+    }
+  }
+  if (childrens.length > 0) {
+    head.children = childrens
+  }
+  return [head].concat(siblings)
+}
+
+export function arr2Tree2(arr, pid) {
+  let res = [];
+  arr.forEach(item => {
+    if (item.parent_id === pid) {
+      const result = arr2Tree2(arr, item.id);
+      if (result.length) {
+        item.children = result;
+      }
+      res.push(item);
+    }
+  });
+  return res;
 }
