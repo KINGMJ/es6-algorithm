@@ -1,4 +1,8 @@
-import { factorial, fibonacci, gcd, reverseList, arr2Tree, arr2Tree2 } from './index'
+import {
+  factorial, fibonacci, gcd, reverseList, arr2Tree,
+  arr2Tree2, preOrderTraverse, levelOrderTraverse
+} from './index'
+
 import { array2List } from '../structure/linkedList'
 
 describe('计算阶乘', () => {
@@ -133,5 +137,43 @@ describe('数组转多叉树', () => {
       }];
     expect(arr2Tree(folders)).toStrictEqual(tree)
   })
+})
 
+
+describe('多叉树的遍历', () => {
+  const tree = {
+    name: 'A', childeren: [
+      {
+        name: 'B', childeren: [
+          {
+            name: 'B1', childeren: [
+              { name: 'B11' },
+              { name: 'B12' },
+              { name: 'B13' }
+            ]
+          },
+          {
+            name: 'B2'
+          }]
+      },
+      {
+        name: 'C',
+        childeren: [
+          { name: 'C1' },
+          { name: 'C2' }
+        ]
+      },
+      {
+        name: 'D',
+        childeren: [{ name: 'D1' }]
+      }
+    ]
+  }
+  test('先序遍历', () => {
+    preOrderTraverse(tree)
+  })
+
+  test('层序遍历', () => {
+    levelOrderTraverse([tree])
+  })
 })

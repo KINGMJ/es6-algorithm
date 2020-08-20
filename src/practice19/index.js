@@ -62,3 +62,27 @@ export function arr2Tree2(arr, pid) {
   });
   return res;
 }
+
+export function preOrderTraverse(root) {
+  console.log(root.name)
+  if (root.childeren == null) {
+    return
+  }
+  for (let item of root.childeren) {
+    preOrderTraverse(item)
+  }
+}
+
+export function levelOrderTraverse(nodes) {
+  if (nodes.length == 0) {
+    return;
+  }
+  let temp = []
+  for (let item of nodes) {
+    console.log(item.name)
+    if (item.childeren != null) {
+      temp = temp.concat(item.childeren)
+    }
+  }
+  levelOrderTraverse(temp)
+}

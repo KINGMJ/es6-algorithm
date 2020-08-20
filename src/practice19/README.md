@@ -429,3 +429,112 @@ function arr2Tree(arr, pid) {
   return res
 }
 ```
+
+
+## 多叉树的前序遍历（深度优先遍历）
+
+二叉树是先遍历根，再遍历左子树，再遍历右子树。对于多叉树，原理相同，区别就是遍历左子树和右子树变成循环对子树进行递归遍历算法
+
+第一步：
+
+同样，我们找出基线条件。对于多叉树，我们对它进行前序遍历，当遍历到叶子节点的时候，就结束了。
+
+```
+function preOrderTraverse(root) {
+  if (root.childeren == null) {
+    return
+  }
+}
+```
+
+第二步：
+
+大问题拆小。对于多叉树而言。我们有一个根节点，然后根节点下有几个孩子。我们假设它的孩子的问题已经解决了。那么我们解决这个根节点的问题就行了。
+
+所以，我们首先访问根节点本身，再依次访问它的孩子。
+
+```
+function preOrderTraverse(root) {
+  console.log(root)
+  if (root.childeren == null) {
+    return
+  }
+  for (let item of root.childeren) {
+    preOrderTraverse(item)
+  }
+}
+
+```
+
+
+## 多叉树的层序遍历（广度优先遍历）
+
+层序遍历，一层一层的访问树的节点。通常可以用这种方式来求树的深度。在处理现实问题，比如部门树，我们要限制子部门的深度，就可以用层序遍历来实现。
+
+树的层序遍历用递归可能不太好理解，因为树的根节点只有一个，但它的孩子节点有多个。这样去推导的时候，数据类型不一致。
+
+我们转化成森林的层序遍历就好理解了。
+
+森林是由若干棵树组成的。层序遍历可以先访问森林的第一层，再访问森林的第二层，依次类推。
+
+我们可以确定递归的参数为每一层的节点组成的数组，森林的第一层为[root]
+
+第一步：
+
+
+```
+//nodes 为森林每一层节点组成的数组
+function levelOrderTraverse(nodes) {
+  
+}
+```
+
+第二步：
+
+基线条件也很好确定了，如果传入的nodes为空，就结束掉
+
+```
+function levelOrderTraverse(nodes) {
+  if(nodes.length == 0){
+    return
+  }
+}
+```
+
+第三步：
+
+分解问题，假设第二层的节点的问题已经解决。我们来处理第一层节点的问题。
+
+那么我们只需要遍历第一层的所有节点，打印它们即可。
+
+
+```
+function levelOrderTraverse(nodes) {
+  if (nodes.length == 0) {
+    return;
+  }
+  for (let item of nodes) {
+    console.log(item.name)
+  }
+}
+```
+
+前面我们说假设第二层的节点的问题已经解决，也就是levelOrderTraverse([第二层节点的集合])。那么我们在第一层只需要得到第二层的节点的集合。
+
+我们使用一个 temp 数组来存放第二层节点的值，也就是说如果第一层节点遍历的时候，它有 children 就保存到 temp 数组中。
+
+```
+function levelOrderTraverse(nodes) {
+  if (nodes.length == 0) {
+    return;
+  }
+  let temp = []
+  for (let item of nodes) {
+    console.log(item.name)
+    if (item.childeren != null) {
+      temp = temp.concat(item.childeren)
+    }
+  }
+  levelOrderTraverse(temp)
+}
+```
