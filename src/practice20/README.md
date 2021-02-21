@@ -1,4 +1,7 @@
-# 779. 第K个语法符号
+# 445. 两数相加 II
 
-https://leetcode-cn.com/problems/k-th-symbol-in-grammar/
+https://leetcode-cn.com/problems/add-two-numbers-ii/
 
+## 两种解法：
+
+翻转链表和栈

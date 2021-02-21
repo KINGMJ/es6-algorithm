@@ -1,25 +1,25 @@
-/**
- * @param {number} N
- * @param {number} K
- * @return {number}
- */
-export function kthGrammar(N, K) {
-  return getLineNumber(N)[K - 1]
-};
+import reverseList from "../practice16/index";
+import { ListNode } from "../structure/linkedList";
 
-//递归获取每一行的字符
-function getLineNumber(n) {
-  if (n == 1) {
-    return [0]
-  }
-  const res = getLineNumber(n - 1)
-  let arr = []
-  for (let i of res) {
-    if (i == 0) {
-      arr = arr.concat([0, 1])
-    } else if (i == 1) {
-      arr = arr.concat([1, 0])
+export function addTwoNumbers(l1, l2) {
+  l1 = reverseList(l1);
+  l2 = reverseList(l2);
+  let p = l1,
+    q = l2,
+    carry = 0; //进位
+  const res = new ListNode(null);
+  let cur = res;
+  while (p || q || carry === 1) {
+    const sum = (p ? p.val : 0) + (q ? q.val : 0) + carry;
+    carry = (sum / 10) | 0;
+    cur.next = new ListNode(sum % 10);
+    cur = cur.next;
+    if (p) {
+      p = p.next;
+    }
+    if (q) {
+      q = q.next;
     }
   }
-  return arr
+  return reverseList(res.next);
 }
