@@ -1,7 +1,8 @@
-import selectionSort from "./index";
-import quickSort from "./index1";
-import bubbleSort from "./index2";
-import insertionSort from "./index3";
+import { selectionSort } from "./index";
+import { quickSort } from "./index1";
+import { bubbleSort } from "./index2";
+import { insertionSort } from "./index3";
+import { shellSort } from "./index4";
 
 describe("排序算法测试", () => {
   test("选择排序，从小到大排列", () => {
@@ -38,5 +39,13 @@ describe("插入排序测试", () => {
     let arr = [7, 6, 9, 3, 1, 5, 2, 4];
     arr = insertionSort(arr);
     expect(arr).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 9]);
+  });
+});
+
+describe("希尔排序算法", () => {
+  test("[8,9,1,7,2,3,5,4,6,0]", () => {
+    let arr = [8, 9, 1, 7, 2, 3, 5, 4, 6, 0];
+    arr = shellSort(arr);
+    expect(arr).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });

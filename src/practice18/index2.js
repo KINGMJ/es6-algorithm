@@ -1,4 +1,4 @@
-export default function bubbleSort(arr) {
+export function bubbleSort(arr) {
   let temp;
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
