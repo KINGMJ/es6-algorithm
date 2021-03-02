@@ -3,6 +3,7 @@ import { quickSort } from "./index1";
 import { bubbleSort } from "./index2";
 import { insertionSort } from "./index3";
 import { shellSort } from "./index4";
+import { headSort } from "./index5";
 
 describe("排序算法测试", () => {
   test("选择排序，从小到大排列", () => {
@@ -47,5 +48,13 @@ describe("希尔排序算法", () => {
     let arr = [8, 9, 1, 7, 2, 3, 5, 4, 6, 0];
     arr = shellSort(arr);
     expect(arr).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+});
+
+describe("堆排序算法", () => {
+  test("[50,10,90,30,70,40,80,60,20]", () => {
+    let arr = [50, 10, 90, 30, 70, 40, 80, 60, 20];
+    arr = headSort(arr);
+    expect(arr).toStrictEqual([10, 20, 30, 40, 50, 60, 70, 80, 90]);
   });
 });
