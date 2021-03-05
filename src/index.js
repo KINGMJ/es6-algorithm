@@ -1,5 +1,6 @@
-import BinaryTree from "./practice21/index";
+import { mergeSort } from "./practice18/index6";
 
-const binaryTree = new BinaryTree();
+let arr = [50, 10, 90, 30, 70, 40, 80, 60, 20];
+arr = mergeSort(arr);
 
-console.log(binaryTree.arrayToTree1([2, null, 4, 9, 8, null, null, 4]));
+console.log(arr);
