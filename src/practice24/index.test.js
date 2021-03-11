@@ -1,5 +1,5 @@
 import { arrayToTree } from "../structure/binaryTree";
-import { isBalanced } from "./index";
+import { isBalanced } from "./index1";
 
 describe("判断是否是平衡二叉树", () => {
   test("[3,9,20,null,null,15,7]", () => {

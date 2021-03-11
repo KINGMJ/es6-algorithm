@@ -2,4 +2,4 @@
 
 https://leetcode-cn.com/problems/balanced-binary-tree/
 
-这道题本质上是求二叉树的深度，使用层序遍历
+这道题本质上是求二叉树的深度，`index`使用层序遍历，自顶向下的递归
