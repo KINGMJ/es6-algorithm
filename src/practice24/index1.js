@@ -9,9 +9,8 @@ export function isBalanced(root) {
   );
 
   /**
-   * 层序遍历求二叉树的高度
+   * 求二叉树的高度
    * @param {*} nodes
-   * @param {*} deep
    * @returns
    */
   function height(root) {
