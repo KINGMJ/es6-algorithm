@@ -1,17 +1,14 @@
 export function inorderTraversal(root) {
-  function traversal(root) {
-    if (!!root.left) {
-      traversal(root.left);
-    }
-    arr.push(root.val);
-    if (!!root.right) {
-      traversal(root.right);
-    }
-  }
   let arr = [];
-  if (root == null) {
-    return [];
-  }
-  traversal(root);
+  traversal(root, arr);
   return arr;
+
+  function traversal(root, arr) {
+    if (root == null) {
+      return;
+    }
+    traversal(root.left, arr);
+    arr.push(root.val);
+    traversal(root.right, arr);
+  }
 }
