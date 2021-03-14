@@ -1,5 +1,5 @@
 import { arrayToTree } from "../structure/binaryTree";
-import { preorderTraversal } from "./index";
+import { preorderTraversal } from "./index1";
 
 describe("二叉树的前序遍历", () => {
   test("[1, null,2,3]", () => {
