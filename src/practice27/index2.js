@@ -4,11 +4,11 @@ export function levelOrder(root) {
   queue.push(root);
 
   while (root && queue.length) {
-    let tempArr = [];
+    res.push([]);
     const queueSize = queue.length;
     for (let i = 0; i < queueSize; i++) {
       root = queue.shift();
-      tempArr.push(root.val);
+      res[res.length - 1].push(root.val);
       if (!!root.left) {
         queue.push(root.left);
       }
@@ -16,8 +16,6 @@ export function levelOrder(root) {
         queue.push(root.right);
       }
     }
-    console.log(tempArr);
-    res.push(tempArr);
   }
   return res;
 }

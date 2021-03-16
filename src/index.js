@@ -1,6 +1,5 @@
-import { mergeSort } from "./practice18/index6";
+import { arrayToTree } from "./structure/binaryTree";
+import { levelOrder } from "./practice27/index1";
 
-let arr = [50, 10, 90, 30, 70, 40, 80, 60, 20];
-arr = mergeSort(arr);
-
-console.log(arr);
+const tree = arrayToTree([1, 2, 3, null, null, 4, 5]);
+console.log(levelOrder(tree));
