@@ -1,25 +1,22 @@
-export function levelOrder(root) {
-  let arr = [];
-  if (root == null) {
-    return [];
-  }
-  traversal([root], arr);
-  return arr;
+export function levelOrderBottom(root) {
+  const res = [];
+  const queue = []; //使用数组模拟一个队列
+  queue.push(root);
 
-  function traversal(nodes, arr) {
-    if (nodes.length == 0) {
-      return;
-    }
-    let temp = [];
-    for (let node of nodes) {
-      arr.push(node.val);
-      if (!!node.left) {
-        temp.push(node.left);
+  while (root && queue.length) {
+    let tempArr = [];
+    const queueSize = queue.length;
+    for (let i = 0; i < queueSize; i++) {
+      root = queue.shift();
+      tempArr.push(root.val);
+      if (!!root.left) {
+        queue.push(root.left);
       }
-      if (!!node.right) {
-        temp.push(node.right);
+      if (!!root.right) {
+        queue.push(root.right);
       }
     }
-    traversal(temp, arr);
+    res.unshift(tempArr);
   }
+  return res;
 }
