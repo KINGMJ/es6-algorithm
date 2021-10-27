@@ -1,5 +1,7 @@
 # 找到数组的中间位置
+
 https://leetcode-cn.com/problems/find-the-middle-index-in-array/
+https://leetcode-cn.com/leetbook/read/array-and-string/yf47s/
 
 ## 题解
 

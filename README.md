@@ -1,5 +1,6 @@
 # es6-algorithm
-使用es6的算法练习
+
+使用 es6 的算法练习
 
 ## 运行
 
@@ -11,3 +12,6 @@ npm install
 
 vscode 安装 `Jest Runner` 和 `Jest` 插件
 
+## 数组专项练习
+
+- practice30：找到数组的中间位置
