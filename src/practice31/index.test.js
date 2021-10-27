@@ -1,5 +1,5 @@
 import { searchInsert } from './index'
-describe('找到数组的中间位置', () => {
+describe('搜索插入位置', () => {
   test('case1', () => {
     expect(searchInsert([1, 3, 5, 6], 5)).toStrictEqual(2)
   })
