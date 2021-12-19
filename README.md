@@ -12,6 +12,9 @@ npm install
 
 vscode 安装 `Jest Runner` 和 `Jest` 插件
 
+http://localhost:8082/bundle
+
+
 ## Demo List
 
 1. 两数之和

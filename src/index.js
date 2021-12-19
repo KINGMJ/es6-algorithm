@@ -1,5 +1,9 @@
-import { arrayToTree } from "./structure/binaryTree";
-import { levelOrder } from "./practice27/index1";
+import { findDiagonalOrder } from './practice35/index'
 
-const tree = arrayToTree([1, 2, 3, null, null, 4, 5]);
-console.log(levelOrder(tree));
+const mat = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+]
+
+console.log(findDiagonalOrder(mat))
