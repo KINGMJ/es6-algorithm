@@ -1,5 +1,5 @@
 import { findDiagonalOrder } from './index'
-describe('矩阵置零', () => {
+describe('对角线遍历', () => {
   test('case1', () => {
     const mat = [
       [1, 2, 3],

@@ -1,9 +1,11 @@
 export function findDiagonalOrder(mat) {
+  // 矩阵的row和col，以及一个res数组
   const row = mat.length,
     col = mat[0].length,
     res = []
 
   for (let i = 0; i < col; i++) {
+    //[xPos,yPos]起始值为每一个对角线的第一个元素
     let xPos = 0,
       yPos = i,
       arr = []
@@ -12,6 +14,7 @@ export function findDiagonalOrder(mat) {
       xPos++
       yPos--
     }
+    // 偶数列需要反转
     if (!(i & 1)) {
       arr.reverse()
     }
