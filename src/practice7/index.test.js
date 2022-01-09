@@ -1,80 +1,115 @@
-import { StaticLinkList } from './index'
+import StaticLinkedList from '.'
 
 describe('静态链表初始化测试', () => {
-  test('空链表', () => {
-    const staticLinkList = new StaticLinkList().init(0)
-    expect(staticLinkList.space).toStrictEqual([])
+  test('申请的空间不足', () => {
+    expect(() => {
+      new StaticLinkedList(0)
+    }).toThrow('申请的空间至少是3或以上')
   })
 
-  test('非空链表', () => {
-    const staticLinkList = new StaticLinkList().init(10)
+  test('申请的空间足够', () => {
+    const list = new StaticLinkedList(3)
     //第一个元素的cur存放备用链表第一个节点的下标
-    expect(staticLinkList.space[0].cur).toStrictEqual(1)
+    expect(list.space[0].cur).toStrictEqual(1)
     //最后一个元素的cur存放第一个插入元素的下标，相当于头结点
-    expect(staticLinkList.space[9].cur).toStrictEqual(0)
-
-    console.log(staticLinkList)
+    expect(list.space[2].cur).toStrictEqual(0)
+    //空链表长度为0
+    expect(list.length).toStrictEqual(0)
   })
 })
-
 
 describe('静态链表整表创建，尾插法', () => {
-  test('创建10个元素的链表', () => {
-    let staticLinkList = new StaticLinkList().init(20)
-    staticLinkList = staticLinkList.createListTail(10)
-    //第一个元素的cur应该为11
-    expect(staticLinkList.space[0].cur).toStrictEqual(11)
-    expect(staticLinkList.length).toStrictEqual(10)
-    //第11个元素的cur应该0
-    expect(staticLinkList.space[10].cur).toStrictEqual(0)
-    console.log(staticLinkList)
+  test('创建的链表超过了最大限制', () => {
+    const list = new StaticLinkedList(6)
+    const isSucceed = list.create(6)
+    expect(isSucceed).toStrictEqual(false)
+  })
+
+  test('创建的链表刚好满了', () => {
+    const list = new StaticLinkedList(6)
+    const isSucceed = list.create(4)
+    expect(isSucceed).toStrictEqual(true)
+    //链表满了，第一个元素的cur为0
+    expect(list.space[0].cur).toStrictEqual(0)
+    //表尾的cur为0
+    expect(list.space[list.length].cur).toStrictEqual(0)
+    //头结点的cur为第一个元素的索引
+    expect(list.space[list.MAX_SIZE - 1].cur).toStrictEqual(1)
+    //链表的长度为4
+    expect(list.length).toStrictEqual(4)
   })
 })
 
+describe('链表清空操作', () => {
+  test('空链表清空', () => {
+    const list = new StaticLinkedList(12)
+    list.clear()
+    expect(list.space[0].cur).toStrictEqual(1)
+    expect(list.space[list.MAX_SIZE - 1].cur).toStrictEqual(0)
+    expect(list.length).toStrictEqual(0)
+  })
+
+  test('非空链表清空', () => {
+    const list = new StaticLinkedList(12)
+    list.create(12)
+    list.clear()
+    expect(list.space[0].cur).toStrictEqual(1)
+    expect(list.space[list.MAX_SIZE - 1].cur).toStrictEqual(0)
+    expect(list.length).toStrictEqual(0)
+  })
+})
 
 describe('静态链表插入测试', () => {
-  test('插入到第3个元素之前', () => {
-    let staticLinkList = new StaticLinkList().init(20)
-    staticLinkList = staticLinkList.createListTail(6)
-    staticLinkList = staticLinkList.insert(3, "插入的元素")
+  let list
+  beforeEach(() => {
+    list = new StaticLinkedList(6)
+    list.create(3)
+  })
+  test('插入到表头，刚好表满', () => {
+    list.insert(1, '插入的元素')
+    expect(list.space[0].cur).toStrictEqual(0)
+    //新插入的元素cur应该指向之前的第一个元素，即1
+    expect(list.space[4].cur).toStrictEqual(1)
+    expect(list.space[4].data).toStrictEqual('插入的元素')
+    expect(list.length).toStrictEqual(4)
+  })
 
-    console.log(staticLinkList)
-    //第一个元素的cur应该为8
-    expect(staticLinkList.space[0].cur).toStrictEqual(8)
-    //长度为7
-    expect(staticLinkList.length).toStrictEqual(7)
-    //下标为7的元素，即新插入的元素的cur应该为第3个元素之前的一个元素的cur值
-    expect(staticLinkList.space[7].cur).toStrictEqual(3)
-    //下标为2的元素，即第3个元素之前的一个元素的cur值应该为新插入的元素的下标
-    expect(staticLinkList.space[2].cur).toStrictEqual(7)
+  test('插入到表尾', () => {
+    list.insert(4, '插入的元素')
+    //插入到表尾，它的cur应该为0
+    expect(list.space[4].cur).toStrictEqual(0)
+    expect(list.space[4].data).toStrictEqual('插入的元素')
+    expect(list.length).toStrictEqual(4)
+  })
+  test('插入到第3个元素之前', () => {
+    list.insert(3, '插入的元素')
+    expect(list.space[4].cur).toStrictEqual(3)
+    expect(list.space[4].data).toStrictEqual('插入的元素')
+    expect(list.length).toStrictEqual(4)
   })
 })
 
 describe('静态链表删除测试', () => {
   test('删除第一个元素', () => {
-    let staticLinkList = new StaticLinkList().init(20)
-    staticLinkList = staticLinkList.createListTail(6)
-    staticLinkList = staticLinkList.insert(3, "插入的元素")
-    console.log(staticLinkList)
-    staticLinkList = staticLinkList.listDelete(1)
-    console.log(staticLinkList)
-
+    const list = new StaticLinkedList(20)
+    list.create(6)
+    list.insert(3, '插入的元素')
+    list.delete(1)
     //长度为6
-    expect(staticLinkList.length).toStrictEqual(6)
+    expect(list.length).toStrictEqual(6)
     //头结点保存的cur为2
-    expect(staticLinkList.space[19].cur).toStrictEqual(2)
+    expect(list.space[list.MAX_SIZE - 1].cur).toStrictEqual(2)
     //下标为0的元素保存的cur为1
-    expect(staticLinkList.space[0].cur).toStrictEqual(1)
+    expect(list.space[0].cur).toStrictEqual(1)
     //下标为1的元素保存的cur为8，即删除前备用链表的第一个元素的位置
-    expect(staticLinkList.space[1].cur).toStrictEqual(8)
-
+    expect(list.space[1].cur).toStrictEqual(8)
   })
 })
 
 describe('静态链表的长度获取，使用链表遍历的方式', () => {
   test('链表长度', () => {
-    let staticLinkList = new StaticLinkList().init(30)
-    staticLinkList = staticLinkList.createListTail(20)
-    expect(staticLinkList.listLength()).toStrictEqual(20)
+    const list = new StaticLinkedList(30)
+    list.create(20)
+    expect(list.getLength()).toStrictEqual(20)
   })
 })
