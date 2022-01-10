@@ -1,21 +1,30 @@
 export function levelOrder(root) {
-  const res = [];
-  const queue = []; //使用数组模拟一个队列
-  queue.push(root);
+  //异常处理
+  if (root == null) {
+    return []
+  }
+  const res = [] //最终的结果
+  const queue = [] //用数组模拟队列
+  queue.push(root)
 
-  while (root && queue.length) {
-    res.push([]);
-    const queueSize = queue.length;
+  while (queue.length) {
+    //每一层开始遍历前，先push一个空数组到res中
+    res.push([])
+    //每一层遍历前，记录一下该层的节点个数
+    const queueSize = queue.length
     for (let i = 0; i < queueSize; i++) {
-      root = queue.shift();
-      res[res.length - 1].push(root.val);
+      //内部逻辑跟传统BFS一样
+      root = queue.shift()
+      //找到末端的空数组，push到该数组
+      res[res.length - 1].push(root.val)
+
       if (!!root.left) {
-        queue.push(root.left);
+        queue.push(root.left)
       }
       if (!!root.right) {
-        queue.push(root.right);
+        queue.push(root.right)
       }
     }
   }
-  return res;
+  return res
 }
