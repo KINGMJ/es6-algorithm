@@ -1,14 +1,13 @@
 export function preorderTraversal(root) {
-  let arr = [];
-  traversal(root, arr);
-  return arr;
-
-  function traversal(root, arr) {
+  const res = []
+  traversal(root)
+  return res
+  function traversal(root) {
     if (root == null) {
-      return;
+      return
     }
-    arr.push(root.val);
-    traversal(root.left, arr);
-    traversal(root.right, arr);
+    res.push(root.val)
+    traversal(root.left)
+    traversal(root.right)
   }
 }
