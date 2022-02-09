@@ -14,7 +14,6 @@ vscode 安装 `Jest Runner` 和 `Jest` 插件
 
 http://localhost:8082/bundle
 
-
 ## Demo List
 
 1. 两数之和
@@ -52,6 +51,7 @@ http://localhost:8082/bundle
 33. 旋转图像
 34. 矩阵置零
 35. 对角线遍历
+36. 买卖股票的最佳时机
 
 ## 数组和字符串专项练习
 
