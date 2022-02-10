@@ -12,4 +12,8 @@ describe('有效的括号', () => {
   test('(]', () => {
     expect(isValid('(]')).toStrictEqual(false)
   })
+
+  test('((', () => {
+    expect(isValid('((')).toStrictEqual(false)
+  })
 })

@@ -24,5 +24,6 @@ export function isValid(s) {
       stack.push(ch)
     }
   }
-  return true
+  // 需要考虑一种情况，"{{" 这种字符存入栈中，迭代结束后需要判断栈是否为空
+  return !stack.length
 }
