@@ -1,6 +1,6 @@
 import { maxProfit } from './index'
 
-describe('找到数组的中间位置', () => {
+describe('买卖股票的最佳时期', () => {
   test('[7,1,5,3,6,4]', () => {
     expect(maxProfit([7, 1, 5, 3, 6, 4])).toStrictEqual(5)
   })
