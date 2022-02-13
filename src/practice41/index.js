@@ -8,9 +8,13 @@ async function createMGraph() {
   const g = {
     vexs: [], // 顶点数组
     arc: [], // 边数组
+    numVertexes: 0, // 顶点数
+    numEdges: 0, // 边数
   }
   console.log('请输入顶点数和边数\n')
   const { numVertexes, numEdges } = await prompt.get(['numVertexes', 'numEdges'])
+  g.numVertexes = numVertexes
+  g.numEdges = numEdges
 
   // 读入顶点信息，建立顶点表
   for (let i = 0; i < numVertexes; i++) {
@@ -55,4 +59,6 @@ const mGraph = {
     [0, 1, 0, 0, 1, 0, 0],
     [0, 1, 1, 0, 0, 0, 0],
   ],
+  numVertexes: 7,
+  numEdges: 8,
 }

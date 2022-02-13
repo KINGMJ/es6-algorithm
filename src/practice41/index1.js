@@ -10,6 +10,8 @@ async function createALGraph() {
 
   console.log('请输入顶点数和边数\n')
   const { numVertexes, numEdges } = await prompt.get(['numVertexes', 'numEdges'])
+  g.numVertexes = numVertexes
+  g.numEdges = numEdges
 
   for (let i = 0; i < numVertexes; i++) {
     const { vex } = await prompt.get(['vex'])
@@ -27,7 +29,8 @@ async function createALGraph() {
     // 模拟一个链表，生成边表节点
     const nodeA = { adjVex: {}, next: {} }
     nodeA.adjVex = j // 邻接序号为 j
-    // 使用头插法进行插入
+    // 使用头插法进行插入，
+    // 这里需要注意头插法是往链表头部进行插入的
     nodeA.next = g.adjList[i].firstEdge
     g.adjList[i].firstEdge = nodeA
 
@@ -45,22 +48,22 @@ async function createALGraph() {
 createALGraph()
 
 // 邻接表结果
-const g = {
+const ALGraph = {
   adjList: [
     {
       data: 'a',
       firstEdge: {
-        adjVex: '3',
-        next: { adjVex: '2', next: { adjVex: '1', next: null } },
+        adjVex: '1',
+        next: { adjVex: '2', next: { adjVex: '3', next: null } },
       },
     },
     {
       data: 'b',
       firstEdge: {
-        adjVex: '6',
+        adjVex: '4',
         next: {
           adjVex: '5',
-          next: { adjVex: '4', next: { adjVex: '0', next: null } },
+          next: { adjVex: '6', next: { adjVex: '0', next: null } },
         },
       },
     },
@@ -82,4 +85,6 @@ const g = {
       firstEdge: { adjVex: '2', next: { adjVex: '1', next: null } },
     },
   ],
+  numVertexes: '7',
+  numEdges: '8',
 }
