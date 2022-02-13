@@ -1,20 +1,6 @@
-//邻接矩阵
-const mGraph = {
-  vexs: ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
-  arc: [
-    [0, 1, 1, 1, 0, 0, 0],
-    [1, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0, 1, 0],
-    [0, 1, 0, 0, 1, 0, 0],
-    [0, 1, 1, 0, 0, 0, 0],
-  ],
-  numVertexes: 7,
-  numEdges: 8,
-}
+export function dfsTraverse(g) {
+  const res = [] //保存到遍历结果到数组中
 
-function dfsTraverse(g) {
   // 使用一个 visited 数组保存顶点是否访问过
   const visited = []
   // 初始化，所有的顶点都是未访问状态
@@ -36,8 +22,8 @@ function dfsTraverse(g) {
    */
   function dfs(g, i) {
     visited[i] = true
-    // 打印顶点
-    console.log(g.vexs[i])
+    // 保存顶点
+    res.push(g.vexs[i])
     for (let j = 0; j < g.numVertexes; j++) {
       // 如果有边，并且没有被访问过，继续 dfs
       if (g.arc[i][j] == 1 && !visited[j]) {
@@ -45,6 +31,5 @@ function dfsTraverse(g) {
       }
     }
   }
+  return res
 }
-
-dfsTraverse(mGraph) // abefgcd
