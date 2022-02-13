@@ -26,7 +26,7 @@ export function bfsTraverse1(g) {
       // 出队列
       const w = queue.shift()
       // 找到当前顶点边表链表头指针
-      let node = g.adjList[i].firstEdge
+      let node = g.adjList[w].firstEdge
       while (node) {
         // 若此顶点没有被访问
         if (!visited[node.adjVex]) {
