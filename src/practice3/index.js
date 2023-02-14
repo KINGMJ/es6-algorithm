@@ -70,7 +70,7 @@ export class LinkedList {
     //返回删除节点的数据并释放该节点
     const data = q.data
     //delete q
-    ++this.length
+    --this.length
     return data
   }
 
@@ -142,53 +142,53 @@ export class LinkedList {
     return target.concat(rest)
   }
 
-/**
- * 头插法实现链表整表创建
- * @param {*} n
- */
-createListHead(n) {
-  let i = 0,
-    node
-  for (i; i < n; i++) {
-    node = new Node(Number.parseInt(Math.random() * 10 + 1))
-    //核心逻辑，新创建的节点指向this.head.next，也就是null
-    //this.head.next指向该节点，也就是第一个节点
-    //每次创建的都是第一个节点
-    node.next = this.head.next
-    this.head.next = node
-    ++this.length
+  /**
+   * 头插法实现链表整表创建
+   * @param {*} n
+   */
+  createListHead(n) {
+    let i = 0,
+      node
+    for (i; i < n; i++) {
+      node = new Node(Number.parseInt(Math.random() * 10 + 1))
+      //核心逻辑，新创建的节点指向this.head.next，也就是null
+      //this.head.next指向该节点，也就是第一个节点
+      //每次创建的都是第一个节点
+      node.next = this.head.next
+      this.head.next = node
+      ++this.length
+    }
   }
-}
 
-/**
- * 尾插法实现链表整表创建
- * @param {*} n
- */
-createListTail(n) {
-  let i = 0,
-    node = this.head
-  for (i; i < n; i++) {
-    //尾插法比较容易理解，就是append
-    node.next = new Node(Number.parseInt(Math.random() * 10 + 1))
-    node = node.next
-    ++this.length
+  /**
+   * 尾插法实现链表整表创建
+   * @param {*} n
+   */
+  createListTail(n) {
+    let i = 0,
+      node = this.head
+    for (i; i < n; i++) {
+      //尾插法比较容易理解，就是append
+      node.next = new Node(Number.parseInt(Math.random() * 10 + 1))
+      node = node.next
+      ++this.length
+    }
   }
-}
 
-/**
- * 清空链表
- */
-clear() {
-  let p = this.head.next,
-    q
-  while (p) {
-    q = p.next
-    //释放p free(p)
-    p = q
-    --this.length
+  /**
+   * 清空链表
+   */
+  clear() {
+    let p = this.head.next,
+      q
+    while (p) {
+      q = p.next
+      //释放p free(p)
+      p = q
+      --this.length
+    }
+    this.head.next = p
   }
-  this.head.next = p
-}
 
   /**
    * 单链表整表转数组

@@ -42,6 +42,13 @@ describe("插入排序测试", () => {
     arr = insertionSort(arr);
     expect(arr).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 9]);
   });
+
+  test("[6, 4, 1, 2, 5]", () => {
+    let arr = [6, 4];
+    arr = insertionSort(arr);
+    console.log(arr)
+    expect(arr).toStrictEqual([4, 6]);
+  });
 });
 
 describe("希尔排序算法", () => {
