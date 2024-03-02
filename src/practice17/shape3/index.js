@@ -35,4 +35,18 @@ function getInsertedPosition(dateArr, date) {
     return high + 1
 }
 
-
+function getWorkingDays(startDate, endDate, workdaysArray) {
+    var startDateObj = new Date(startDate);
+    var endDateObj = new Date(endDate);
+  
+    // 对起始日期和结束日期进行排序
+    var [lowerDate, higherDate] = [startDateObj, endDateObj].sort((a, b) => a - b);
+  
+    // 过滤出位于起始日期和结束日期之间的工作日
+    var workingDays = workdaysArray.filter(function(dateString) {
+      var currentDate = new Date(dateString);
+      return currentDate >= lowerDate && currentDate <= higherDate;
+    });
+  
+    return workingDays;
+  }
